@@ -22,7 +22,7 @@ import (
 	"time"
 
 	"github.com/beevik/ntp"
-	"github.com/prometheus/client_golang/prometheus"
+	"github.com/kylin-ops/node_exporter/prometheus/client_golang/prometheus"
 	"gopkg.in/alecthomas/kingpin.v2"
 )
 

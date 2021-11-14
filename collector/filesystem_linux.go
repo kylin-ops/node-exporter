@@ -25,7 +25,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/prometheus/common/log"
+	"github.com/kylin-ops/node_exporter/prometheus/common/log"
 )
 
 const (

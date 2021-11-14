@@ -18,8 +18,8 @@ package collector
 import (
 	"fmt"
 
-	"github.com/prometheus/client_golang/prometheus"
-	"github.com/prometheus/procfs/sysfs"
+	"github.com/kylin-ops/node_exporter/prometheus/client_golang/prometheus"
+	"github.com/kylin-ops/node_exporter/prometheus/procfs/sysfs"
 )
 
 type cpuFreqCollector struct {

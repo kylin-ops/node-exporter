@@ -23,7 +23,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/prometheus/common/log"
+	"github.com/kylin-ops/node_exporter/prometheus/common/log"
 )
 
 var (

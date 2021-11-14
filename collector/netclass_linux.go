@@ -20,13 +20,12 @@ import (
 	"fmt"
 	"regexp"
 
-	"github.com/prometheus/client_golang/prometheus"
-	"github.com/prometheus/procfs/sysfs"
-	kingpin "gopkg.in/alecthomas/kingpin.v2"
+	"github.com/kylin-ops/node_exporter/prometheus/client_golang/prometheus"
+	"github.com/kylin-ops/node_exporter/prometheus/procfs/sysfs"
 )
 
 var (
-	netclassIgnoredDevices = kingpin.Flag("collector.netclass.ignored-devices", "Regexp of net devices to ignore for netclass collector.").Default("^$").String()
+	netclassIgnoredDevices = "^$"
 )
 
 type netClassCollector struct {
@@ -46,7 +45,7 @@ func NewNetClassCollector() (Collector, error) {
 	if err != nil {
 		return nil, fmt.Errorf("failed to open sysfs: %v", err)
 	}
-	pattern := regexp.MustCompile(*netclassIgnoredDevices)
+	pattern := regexp.MustCompile(netclassIgnoredDevices)
 	return &netClassCollector{
 		fs:                    fs,
 		subsystem:             "network",

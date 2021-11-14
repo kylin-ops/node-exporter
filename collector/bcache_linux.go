@@ -18,9 +18,9 @@ package collector
 import (
 	"fmt"
 
+	"github.com/kylin-ops/node_exporter/prometheus/procfs/bcache"
 	// https://godoc.org/github.com/prometheus/client_golang/prometheus
-	"github.com/prometheus/client_golang/prometheus"
-	"github.com/prometheus/procfs/bcache"
+	"github.com/kylin-ops/node_exporter/prometheus/client_golang/prometheus"
 )
 
 func init() {

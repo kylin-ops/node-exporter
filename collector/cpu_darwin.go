@@ -25,7 +25,7 @@ import (
 	"strconv"
 	"unsafe"
 
-	"github.com/prometheus/client_golang/prometheus"
+	"github.com/kylin-ops/node_exporter/prometheus/client_golang/prometheus"
 )
 
 /*

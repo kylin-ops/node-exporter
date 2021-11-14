@@ -20,10 +20,9 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/kylin-ops/node_exporter/prometheus/client_golang/prometheus"
+	"github.com/kylin-ops/node_exporter/prometheus/common/log"
 	"github.com/mdlayher/wifi"
-	"github.com/prometheus/client_golang/prometheus"
-	"github.com/prometheus/common/log"
-	"gopkg.in/alecthomas/kingpin.v2"
 )
 
 type wifiCollector struct {
@@ -43,7 +42,7 @@ type wifiCollector struct {
 }
 
 var (
-	collectorWifi = kingpin.Flag("collector.wifi.fixtures", "test fixtures to use for wifi collector metrics").Default("").String()
+	collectorWifi = ""
 )
 
 func init() {
@@ -158,7 +157,7 @@ func NewWifiCollector() (Collector, error) {
 }
 
 func (c *wifiCollector) Update(ch chan<- prometheus.Metric) error {
-	stat, err := newWifiStater(*collectorWifi)
+	stat, err := newWifiStater(collectorWifi)
 	if err != nil {
 		// Cannot access wifi metrics, report no error.
 		if os.IsNotExist(err) {

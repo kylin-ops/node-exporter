@@ -19,7 +19,7 @@ import (
 	"fmt"
 	"path/filepath"
 
-	"github.com/prometheus/client_golang/prometheus"
+	"github.com/kylin-ops/node_exporter/prometheus/client_golang/prometheus"
 )
 
 var (

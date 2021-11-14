@@ -22,7 +22,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/prometheus/client_golang/prometheus"
+	"github.com/kylin-ops/node_exporter/prometheus/client_golang/prometheus"
 )
 
 type arpCollector struct {
@@ -97,6 +97,5 @@ func (c *arpCollector) Update(ch chan<- prometheus.Metric) error {
 		ch <- prometheus.MustNewConstMetric(
 			c.entries, prometheus.GaugeValue, float64(entryCount), device)
 	}
-
 	return nil
 }

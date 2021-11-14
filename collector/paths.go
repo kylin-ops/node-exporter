@@ -16,7 +16,7 @@ package collector
 import (
 	"path/filepath"
 
-	"github.com/prometheus/procfs"
+	"github.com/kylin-ops/node_exporter/prometheus/procfs"
 	kingpin "gopkg.in/alecthomas/kingpin.v2"
 )
 

@@ -19,9 +19,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/prometheus/client_golang/prometheus"
-	"github.com/prometheus/common/log"
-	"gopkg.in/alecthomas/kingpin.v2"
+	"github.com/kylin-ops/node_exporter/prometheus/client_golang/prometheus"
+	"github.com/kylin-ops/node_exporter/prometheus/common/log"
 )
 
 // Namespace defines the common namespace to be used by all metrics.
@@ -53,18 +52,18 @@ var (
 )
 
 func registerCollector(collector string, isDefaultEnabled bool, factory func() (Collector, error)) {
-	var helpDefaultState string
-	if isDefaultEnabled {
-		helpDefaultState = "enabled"
-	} else {
-		helpDefaultState = "disabled"
-	}
+	//var helpDefaultState string
+	//if isDefaultEnabled {
+	//	helpDefaultState = "enabled"
+	//} else {
+	//	helpDefaultState = "disabled"
+	//}
 
-	flagName := fmt.Sprintf("collector.%s", collector)
-	flagHelp := fmt.Sprintf("Enable the %s collector (default: %s).", collector, helpDefaultState)
-	defaultValue := fmt.Sprintf("%v", isDefaultEnabled)
+	//flagName := fmt.Sprintf("collector.%s", collector)
+	//flagHelp := fmt.Sprintf("Enable the %s collector (default: %s).", collector, helpDefaultState)
+	//defaultValue := fmt.Sprintf("%v", isDefaultEnabled)
 
-	flag := kingpin.Flag(flagName, flagHelp).Default(defaultValue).Bool()
+	flag := &isDefaultEnabled
 	collectorState[collector] = flag
 
 	factories[collector] = factory

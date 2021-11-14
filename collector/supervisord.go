@@ -18,9 +18,9 @@ package collector
 import (
 	"fmt"
 
+	"github.com/kylin-ops/node_exporter/prometheus/client_golang/prometheus"
+	"github.com/kylin-ops/node_exporter/prometheus/common/log"
 	"github.com/mattn/go-xmlrpc"
-	"github.com/prometheus/client_golang/prometheus"
-	"github.com/prometheus/common/log"
 	"gopkg.in/alecthomas/kingpin.v2"
 )
 
