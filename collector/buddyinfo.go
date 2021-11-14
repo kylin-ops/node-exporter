@@ -45,7 +45,7 @@ func NewBuddyinfoCollector() (Collector, error) {
 		"Count of free blocks according to size.",
 		[]string{"node", "zone", "size"}, nil,
 	)
-	fs, err := procfs.NewFS(*procPath)
+	fs, err := procfs.NewFS(procPath)
 	if err != nil {
 		return nil, fmt.Errorf("failed to open procfs: %v", err)
 	}

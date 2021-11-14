@@ -31,7 +31,7 @@ func init() {
 
 // NewXFSCollector returns a new Collector exposing XFS statistics.
 func NewXFSCollector() (Collector, error) {
-	fs, err := xfs.NewFS(*procPath, *sysPath)
+	fs, err := xfs.NewFS(procPath, sysPath)
 	if err != nil {
 		return nil, fmt.Errorf("failed to open sysfs: %v", err)
 	}

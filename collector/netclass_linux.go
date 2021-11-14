@@ -41,7 +41,7 @@ func init() {
 
 // NewNetClassCollector returns a new Collector exposing network class stats.
 func NewNetClassCollector() (Collector, error) {
-	fs, err := sysfs.NewFS(*sysPath)
+	fs, err := sysfs.NewFS(sysPath)
 	if err != nil {
 		return nil, fmt.Errorf("failed to open sysfs: %v", err)
 	}

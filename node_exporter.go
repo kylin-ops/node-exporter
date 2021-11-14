@@ -24,7 +24,6 @@ import (
 	"github.com/kylin-ops/node_exporter/prometheus/client_golang/prometheus/promhttp"
 	"github.com/kylin-ops/node_exporter/prometheus/common/log"
 	"github.com/kylin-ops/node_exporter/prometheus/common/version"
-	"gopkg.in/alecthomas/kingpin.v2"
 )
 
 // handler wraps an unfiltered http.Handler but uses a filtered handler,
@@ -130,45 +129,33 @@ func (h *handler) innerHandler(filters ...string) (http.Handler, error) {
 
 func main() {
 	var (
-		listenAddress = kingpin.Flag(
-			"web.listen-address",
-			"Address on which to expose metrics and web interface.",
-		).Default(":9100").String()
-		metricsPath = kingpin.Flag(
-			"web.telemetry-path",
-			"Path under which to expose metrics.",
-		).Default("/metrics").String()
-		disableExporterMetrics = kingpin.Flag(
-			"web.disable-exporter-metrics",
-			"Exclude metrics about the exporter itself (promhttp_*, process_*, go_*).",
-		).Bool()
-		maxRequests = kingpin.Flag(
-			"web.max-requests",
-			"Maximum number of parallel scrape requests. Use 0 to disable.",
-		).Default("40").Int()
+		listenAddress          = ":9100"
+		metricsPath            = "/metrics"
+		disableExporterMetrics = false
+		maxRequests            = 40
 	)
 
-	log.AddFlags(kingpin.CommandLine)
-	kingpin.Version(version.Print("node_exporter"))
-	kingpin.HelpFlag.Short('h')
-	kingpin.Parse()
+	//log.AddFlags(kingpin.CommandLine)
+	//kingpin.Version(version.Print("node_exporter"))
+	//kingpin.HelpFlag.Short('h')
+	//kingpin.Parse()
 
 	log.Infoln("Starting node_exporter", version.Info())
 	log.Infoln("Build context", version.BuildContext())
 
-	http.Handle(*metricsPath, newHandler(!*disableExporterMetrics, *maxRequests))
+	http.Handle(metricsPath, newHandler(!disableExporterMetrics, maxRequests))
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte(`<html>
 			<head><title>Node Exporter</title></head>
 			<body>
 			<h1>Node Exporter</h1>
-			<p><a href="` + *metricsPath + `">Metrics</a></p>
+			<p><a href="` + metricsPath + `">Metrics</a></p>
 			</body>
 			</html>`))
 	})
 
-	log.Infoln("Listening on", *listenAddress)
-	if err := http.ListenAndServe(*listenAddress, nil); err != nil {
+	log.Infoln("Listening on", listenAddress)
+	if err := http.ListenAndServe(listenAddress, nil); err != nil {
 		log.Fatal(err)
 	}
 }

@@ -25,7 +25,6 @@ import (
 	"strings"
 
 	"github.com/kylin-ops/node_exporter/prometheus/client_golang/prometheus"
-	"gopkg.in/alecthomas/kingpin.v2"
 )
 
 const (
@@ -33,7 +32,7 @@ const (
 )
 
 var (
-	netStatFields = kingpin.Flag("collector.netstat.fields", "Regexp of fields to return for netstat collector.").Default("^(.*_(InErrors|InErrs)|Ip_Forwarding|Ip(6|Ext)_(InOctets|OutOctets)|Icmp6?_(InMsgs|OutMsgs)|TcpExt_(Listen.*|Syncookies.*|TCPSynRetrans)|Tcp_(ActiveOpens|InSegs|OutSegs|PassiveOpens|RetransSegs|CurrEstab)|Udp6?_(InDatagrams|OutDatagrams|NoPorts))$").String()
+	netStatFields = "^(.*_(InErrors|InErrs)|Ip_Forwarding|Ip(6|Ext)_(InOctets|OutOctets)|Icmp6?_(InMsgs|OutMsgs)|TcpExt_(Listen.*|Syncookies.*|TCPSynRetrans)|Tcp_(ActiveOpens|InSegs|OutSegs|PassiveOpens|RetransSegs|CurrEstab)|Udp6?_(InDatagrams|OutDatagrams|NoPorts))$"
 )
 
 type netStatCollector struct {
@@ -47,7 +46,7 @@ func init() {
 // NewNetStatCollector takes and returns
 // a new Collector exposing network stats.
 func NewNetStatCollector() (Collector, error) {
-	pattern := regexp.MustCompile(*netStatFields)
+	pattern := regexp.MustCompile(netStatFields)
 	return &netStatCollector{
 		fieldPattern: pattern,
 	}, nil

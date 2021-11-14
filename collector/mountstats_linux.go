@@ -105,7 +105,7 @@ func init() {
 
 // NewMountStatsCollector returns a new Collector exposing NFS statistics.
 func NewMountStatsCollector() (Collector, error) {
-	fs, err := procfs.NewFS(*procPath)
+	fs, err := procfs.NewFS(procPath)
 	if err != nil {
 		return nil, fmt.Errorf("failed to open procfs: %v", err)
 	}

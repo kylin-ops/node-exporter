@@ -28,11 +28,10 @@ import (
 	dto "github.com/kylin-ops/node_exporter/prometheus/client_model/go"
 	"github.com/kylin-ops/node_exporter/prometheus/common/expfmt"
 	"github.com/kylin-ops/node_exporter/prometheus/common/log"
-	kingpin "gopkg.in/alecthomas/kingpin.v2"
 )
 
 var (
-	textFileDirectory = kingpin.Flag("collector.textfile.directory", "Directory to read text files with metrics from.").Default("").String()
+	textFileDirectory = ""
 	mtimeDesc         = prometheus.NewDesc(
 		"node_textfile_mtime_seconds",
 		"Unixtime mtime of textfiles successfully read.",
@@ -55,7 +54,7 @@ func init() {
 // in the given textfile directory.
 func NewTextFileCollector() (Collector, error) {
 	c := &textFileCollector{
-		path: *textFileDirectory,
+		path: textFileDirectory,
 	}
 	return c, nil
 }

@@ -24,7 +24,6 @@ import (
 	"strings"
 
 	"github.com/kylin-ops/node_exporter/prometheus/client_golang/prometheus"
-	"gopkg.in/alecthomas/kingpin.v2"
 )
 
 const (
@@ -32,7 +31,7 @@ const (
 )
 
 var (
-	vmStatFields = kingpin.Flag("collector.vmstat.fields", "Regexp of fields to return for vmstat collector.").Default("^(oom_kill|pgpg|pswp|pg.*fault).*").String()
+	vmStatFields = "^(oom_kill|pgpg|pswp|pg.*fault).*"
 )
 
 type vmStatCollector struct {
@@ -45,7 +44,7 @@ func init() {
 
 // NewvmStatCollector returns a new Collector exposing vmstat stats.
 func NewvmStatCollector() (Collector, error) {
-	pattern := regexp.MustCompile(*vmStatFields)
+	pattern := regexp.MustCompile(vmStatFields)
 	return &vmStatCollector{
 		fieldPattern: pattern,
 	}, nil

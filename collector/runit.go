@@ -19,10 +19,9 @@ import (
 	"github.com/kylin-ops/node_exporter/prometheus/client_golang/prometheus"
 	"github.com/kylin-ops/node_exporter/prometheus/common/log"
 	"github.com/soundcloud/go-runit/runit"
-	"gopkg.in/alecthomas/kingpin.v2"
 )
 
-var runitServiceDir = kingpin.Flag("collector.runit.servicedir", "Path to runit service directory.").Default("/etc/service").String()
+var runitServiceDir = "/etc/service"
 
 type runitCollector struct {
 	state, stateDesired, stateNormal, stateTimestamp typedDesc
@@ -65,7 +64,7 @@ func NewRunitCollector() (Collector, error) {
 }
 
 func (c *runitCollector) Update(ch chan<- prometheus.Metric) error {
-	services, err := runit.GetServices(*runitServiceDir)
+	services, err := runit.GetServices(runitServiceDir)
 	if err != nil {
 		return err
 	}

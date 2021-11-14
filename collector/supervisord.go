@@ -21,11 +21,10 @@ import (
 	"github.com/kylin-ops/node_exporter/prometheus/client_golang/prometheus"
 	"github.com/kylin-ops/node_exporter/prometheus/common/log"
 	"github.com/mattn/go-xmlrpc"
-	"gopkg.in/alecthomas/kingpin.v2"
 )
 
 var (
-	supervisordURL = kingpin.Flag("collector.supervisord.url", "XML RPC endpoint.").Default("http://localhost:9001/RPC2").String()
+	supervisordURL = "http://localhost:9001/RPC2"
 )
 
 type supervisordCollector struct {
@@ -108,7 +107,7 @@ func (c *supervisordCollector) Update(ch chan<- prometheus.Metric) error {
 		PID           int    `xmlrpc:"pid"`
 	}
 
-	res, err := xmlrpc.Call(*supervisordURL, "supervisor.getAllProcessInfo")
+	res, err := xmlrpc.Call(supervisordURL, "supervisor.getAllProcessInfo")
 	if err != nil {
 		return fmt.Errorf("unable to call supervisord: %s", err)
 	}

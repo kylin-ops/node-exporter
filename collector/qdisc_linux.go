@@ -22,7 +22,6 @@ import (
 
 	"github.com/ema/qdisc"
 	"github.com/kylin-ops/node_exporter/prometheus/client_golang/prometheus"
-	"gopkg.in/alecthomas/kingpin.v2"
 )
 
 type qdiscStatCollector struct {
@@ -34,7 +33,7 @@ type qdiscStatCollector struct {
 }
 
 var (
-	collectorQdisc = kingpin.Flag("collector.qdisc.fixtures", "test fixtures to use for qdisc collector end-to-end testing").Default("").String()
+	collectorQdisc = ""
 )
 
 func init() {
@@ -88,7 +87,7 @@ func (c *qdiscStatCollector) Update(ch chan<- prometheus.Metric) error {
 	var msgs []qdisc.QdiscInfo
 	var err error
 
-	fixtures := *collectorQdisc
+	fixtures := collectorQdisc
 
 	if fixtures == "" {
 		msgs, err = qdisc.Get()

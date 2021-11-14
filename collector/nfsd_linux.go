@@ -39,7 +39,7 @@ const (
 
 // NewNFSdCollector returns a new Collector exposing /proc/net/rpc/nfsd statistics.
 func NewNFSdCollector() (Collector, error) {
-	fs, err := nfs.NewFS(*procPath)
+	fs, err := nfs.NewFS(procPath)
 	if err != nil {
 		return nil, fmt.Errorf("failed to open procfs: %v", err)
 	}

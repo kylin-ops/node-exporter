@@ -17,24 +17,23 @@ import (
 	"path/filepath"
 
 	"github.com/kylin-ops/node_exporter/prometheus/procfs"
-	kingpin "gopkg.in/alecthomas/kingpin.v2"
 )
 
 var (
 	// The path of the proc filesystem.
-	procPath   = kingpin.Flag("path.procfs", "procfs mountpoint.").Default(procfs.DefaultMountPoint).String()
-	sysPath    = kingpin.Flag("path.sysfs", "sysfs mountpoint.").Default("/sys").String()
-	rootfsPath = kingpin.Flag("path.rootfs", "rootfs mountpoint.").Default("/").String()
+	procPath   = procfs.DefaultMountPoint
+	sysPath    = "/sys"
+	rootfsPath = "/"
 )
 
 func procFilePath(name string) string {
-	return filepath.Join(*procPath, name)
+	return filepath.Join(procPath, name)
 }
 
 func sysFilePath(name string) string {
-	return filepath.Join(*sysPath, name)
+	return filepath.Join(sysPath, name)
 }
 
 func rootfsFilePath(name string) string {
-	return filepath.Join(*rootfsPath, name)
+	return filepath.Join(rootfsPath, name)
 }

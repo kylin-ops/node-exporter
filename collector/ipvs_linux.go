@@ -56,7 +56,7 @@ func newIPVSCollector() (*ipvsCollector, error) {
 		subsystem = "ipvs"
 	)
 
-	c.fs, err = procfs.NewFS(*procPath)
+	c.fs, err = procfs.NewFS(procPath)
 	if err != nil {
 		return nil, fmt.Errorf("failed to open procfs: %v", err)
 	}
