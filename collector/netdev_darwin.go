@@ -23,7 +23,7 @@ import (
 	"regexp"
 	"strconv"
 
-	"github.com/prometheus/common/log"
+	"github.com/kylin-ops/node_exporter/prometheus/common/log"
 	"golang.org/x/sys/unix"
 )
 

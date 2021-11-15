@@ -28,4 +28,5 @@ require (
 	golang.org/x/net v0.0.0-20190503192946-f4e77d36d62c // indirect
 	golang.org/x/sync v0.0.0-20190423024810-112230192c58 // indirect
 	golang.org/x/sys v0.0.0-20190507053917-2953c62de483
+	gopkg.in/alecthomas/kingpin.v2 v2.2.6 // indirect
 )

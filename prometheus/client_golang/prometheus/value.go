@@ -16,11 +16,11 @@ package prometheus
 import (
 	"fmt"
 	"github.com/golang/protobuf/proto"
-	"sort"
-	"sync"
-
 	dto "github.com/kylin-ops/node_exporter/prometheus/client_model/go"
+	"sort"
 )
+
+var CustomLabelValue []map[string]string
 
 // ValueType is an enumeration of metric types that represent a simple value.
 type ValueType int
@@ -94,25 +94,23 @@ func NewConstMetric(desc *Desc, valueType ValueType, value float64, labelValues 
 	}, nil
 }
 
-// MustNewConstMetric is a version of NewConstMetric that panics where
-// NewConstMetric would have returned an error.
-var lock sync.Mutex
-
-func MustNewConstMetric(desc *Desc, valueType ValueType, value float64, labelValues ...string) Metric {
-	lock.Lock()
-	var flag = true
-	for _, v := range desc.variableLabels {
-		if v == "a" {
-			flag = false
-			break
+// 添加全局自定义label value
+func AddCustomLabel(desc *Desc, labelValues ...string) (*Desc, []string) {
+	for _, v := range CustomLabelValue {
+		for label, value := range v {
+			labelValues = append(labelValues, value)
+			if len(labelValues) > len(desc.variableLabels) {
+				desc.variableLabels = append(desc.variableLabels, label)
+			}
 		}
 	}
-	if flag {
-		desc.variableLabels = append(desc.variableLabels, "a")
-	}
-	labelValues = append(labelValues, "aaaaaa")
-	fmt.Println(desc, "111111111111111111", labelValues)
-	lock.Unlock()
+	return desc, labelValues
+}
+
+// MustNewConstMetric is a version of NewConstMetric that panics where
+// NewConstMetric would have returned an error.
+func MustNewConstMetric(desc *Desc, valueType ValueType, value float64, labelValues ...string) Metric {
+	desc, labelValues = AddCustomLabel(desc, labelValues...)
 	m, err := NewConstMetric(desc, valueType, value, labelValues...)
 	if err != nil {
 		panic(err)
