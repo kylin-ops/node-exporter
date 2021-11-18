@@ -20,8 +20,6 @@ import (
 	"sort"
 )
 
-var CustomLabelValue []map[string]string
-
 // ValueType is an enumeration of metric types that represent a simple value.
 type ValueType int
 
@@ -94,23 +92,9 @@ func NewConstMetric(desc *Desc, valueType ValueType, value float64, labelValues 
 	}, nil
 }
 
-// 添加全局自定义label value
-func AddCustomLabel(desc *Desc, labelValues ...string) (*Desc, []string) {
-	for _, v := range CustomLabelValue {
-		for label, value := range v {
-			labelValues = append(labelValues, value)
-			if len(labelValues) > len(desc.variableLabels) {
-				desc.variableLabels = append(desc.variableLabels, label)
-			}
-		}
-	}
-	return desc, labelValues
-}
-
 // MustNewConstMetric is a version of NewConstMetric that panics where
 // NewConstMetric would have returned an error.
 func MustNewConstMetric(desc *Desc, valueType ValueType, value float64, labelValues ...string) Metric {
-	desc, labelValues = AddCustomLabel(desc, labelValues...)
 	m, err := NewConstMetric(desc, valueType, value, labelValues...)
 	if err != nil {
 		panic(err)

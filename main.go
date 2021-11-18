@@ -8,15 +8,16 @@ import (
 	"github.com/kylin-ops/node_exporter/prometheus/client_golang/prometheus/promhttp"
 	"github.com/kylin-ops/node_exporter/prometheus/common/log"
 	"github.com/kylin-ops/node_exporter/prometheus/common/version"
+	"io/ioutil"
 	"net/http"
 	"sort"
 )
 
 var msg = `
-	[
-        {"a": "aaa"},
-	    {"b": "bb"}
-	]
+	{
+		"a": "aa",
+		"b": "bb"
+	}
 `
 
 type Handler struct {
@@ -81,14 +82,14 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	// To serve filtered metrics, we create a filtering handler on the fly.
-	filteredHandler, err := h.innerHandler(filters...)
-	if err != nil {
-		log.Warnln("Couldn't create filtered metrics handler:", err)
-		w.WriteHeader(http.StatusBadRequest)
-		w.Write([]byte(fmt.Sprintf("Couldn't create filtered metrics handler: %s", err)))
-		return
-	}
-	filteredHandler.ServeHTTP(w, r)
+	//filteredHandler, err := h.innerHandler(filters...)
+	//if err != nil {
+	//	log.Warnln("Couldn't create filtered metrics handler:", err)
+	//	w.WriteHeader(http.StatusBadRequest)
+	//	w.Write([]byte(fmt.Sprintf("Couldn't create filtered metrics handler: %s", err)))
+	//	return
+	//}
+	//filteredHandler.ServeHTTP(w, r)
 }
 
 func newHandler(includeExporterMetrics bool, maxRequests int) *Handler {
@@ -112,15 +113,34 @@ func newHandler(includeExporterMetrics bool, maxRequests int) *Handler {
 }
 
 func readLabel(labelPath string) error {
-	//f, err := ioutil.ReadFile(labelPath)
-	//if err != nil {
-	//	return err
-	//}
-	return json.Unmarshal([]byte(msg), &prometheus.CustomLabelValue)
+	var data = map[string]interface{}{}
+	f, err := ioutil.ReadFile(labelPath)
+	if err != nil {
+		return err
+	}
+	json.Unmarshal(f, &data)
+	service, ok := data["service"]
+	if ok {
+		if svc, ok := service.([]interface{}); ok {
+			for _, svc := range svc {
+				if s, ok := svc.(string); ok {
+					prometheus.CustomLabelService = append(prometheus.CustomLabelService, s)
+				}
+			}
+		}
+	}
+	for k, v := range data {
+		if k != "service" {
+			if val, ok := v.(string); ok {
+				prometheus.CustomLabelValue[k] = val
+			}
+		}
+	}
+	return nil
 }
 
-func NewNodeExportHandler(labelPath string) *Handler {
-	err := readLabel(labelPath)
-	fmt.Println(err, prometheus.CustomLabelValue)
+func NewNodeExportHandler(labelPath, scriptPath string) *Handler {
+	_ = readLabel(labelPath)
+	collector.ScriptPath = scriptPath
 	return newHandler(true, 40)
 }

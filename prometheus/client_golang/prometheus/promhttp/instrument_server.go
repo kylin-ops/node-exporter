@@ -224,7 +224,6 @@ func checkLabels(c prometheus.Collector) (code bool, method bool) {
 	}
 
 	close(descc)
-
 	// Create a ConstMetric with the Desc. Since we don't know how many
 	// variable labels there are, try for as long as it needs.
 	for err := errors.New("dummy"); err != nil; lvs = append(lvs, magicString) {

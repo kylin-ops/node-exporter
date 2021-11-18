@@ -39,6 +39,9 @@ const (
 	capDescChan   = 10
 )
 
+var CustomLabelValue = map[string]string{}
+var CustomLabelService []string
+
 // DefaultRegisterer and DefaultGatherer are the implementations of the
 // Registerer and Gatherer interface a number of convenience functions in this
 // package act on. Initially, both variables point to the same Registry, which
@@ -673,7 +676,25 @@ func processMetric(
 			return err
 		}
 	}
-	metricFamily.Metric = append(metricFamily.Metric, dtoMetric)
+	// 添加自定义label
+	var labels []*dto.LabelPair
+	var appendLabelFn = func(key, value string) {
+		labels = append(labels, &dto.LabelPair{Name: &key, Value: &value})
+	}
+	for k, v := range CustomLabelValue {
+		appendLabelFn(k, v)
+	}
+	// 添加service
+	var addServiceLabelFn = func(dMetricLabel dto.Metric, label []*dto.LabelPair, key, svcValue string) {
+		label = append(label, &dto.LabelPair{Name: &key, Value: &svcValue})
+		dMetricLabel.Label = append(dMetricLabel.Label, label...)
+		metricFamily.Metric = append(metricFamily.Metric, &dMetricLabel)
+	}
+	for _, svc := range CustomLabelService {
+		addServiceLabelFn(*dtoMetric, labels, "service", svc)
+	}
+	//dtoMetric.Label  = append(dtoMetric.Label, labels...)
+	//metricFamily.Metric = append(metricFamily.Metric, dtoMetric)
 	return nil
 }
 
