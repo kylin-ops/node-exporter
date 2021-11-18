@@ -139,8 +139,17 @@ func readLabel(labelPath string) error {
 	return nil
 }
 
+// 从文件获取label数据
 func NewNodeExportHandler(labelPath, scriptPath string) *Handler {
 	_ = readLabel(labelPath)
+	collector.ScriptPath = scriptPath
+	return newHandler(true, 40)
+}
+
+// 从函数传入labels和service值
+func NewNodeExportHandlerFromValue(labels map[string]string, services []string, scriptPath string) *Handler {
+	prometheus.CustomLabelValue = labels
+	prometheus.CustomLabelService = services
 	collector.ScriptPath = scriptPath
 	return newHandler(true, 40)
 }
