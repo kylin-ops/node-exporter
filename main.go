@@ -13,13 +13,6 @@ import (
 	"sort"
 )
 
-var msg = `
-	{
-		"a": "aa",
-		"b": "bb"
-	}
-`
-
 type Handler struct {
 	unfilteredHandler http.Handler
 	// exporterMetricsRegistry is a separate registry for the metrics about
@@ -147,9 +140,15 @@ func NewNodeExportHandler(labelPath, scriptPath string) *Handler {
 }
 
 // 从函数传入labels和service值
-func NewNodeExportHandlerFromValue(labels map[string]string, services []string, scriptPath string) *Handler {
-	prometheus.CustomLabelValue = labels
-	prometheus.CustomLabelService = services
+func NewNodeExportHandlerFromValue(scriptPath string) *Handler {
 	collector.ScriptPath = scriptPath
 	return newHandler(true, 40)
+}
+
+func UpdateCustomLabel(labels map[string]string) {
+	prometheus.CustomLabelValue = labels
+}
+
+func UpdateServiceLabel(service []string) {
+	prometheus.CustomLabelService = service
 }
