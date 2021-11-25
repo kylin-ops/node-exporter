@@ -19,7 +19,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/kylin-ops/node_exporter/prometheus/procfs/internal/util"
+	"github.com/kylin-ops/node-exporter/prometheus/procfs/internal/util"
 )
 
 // ClockSource contains metrics related to the clock source

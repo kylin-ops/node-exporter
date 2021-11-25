@@ -24,10 +24,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/kylin-ops/node_exporter/prometheus/client_golang/prometheus"
-	dto "github.com/kylin-ops/node_exporter/prometheus/client_model/go"
-	"github.com/kylin-ops/node_exporter/prometheus/common/expfmt"
-	"github.com/kylin-ops/node_exporter/prometheus/common/log"
+	"github.com/kylin-ops/node-exporter/prometheus/client_golang/prometheus"
+	dto "github.com/kylin-ops/node-exporter/prometheus/client_model/go"
+	"github.com/kylin-ops/node-exporter/prometheus/common/expfmt"
+	"github.com/kylin-ops/node-exporter/prometheus/common/log"
 )
 
 var (

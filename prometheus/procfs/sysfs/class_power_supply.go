@@ -23,7 +23,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/kylin-ops/node_exporter/prometheus/procfs/internal/util"
+	"github.com/kylin-ops/node-exporter/prometheus/procfs/internal/util"
 )
 
 // PowerSupply contains info from files in /sys/class/power_supply for a single power supply.

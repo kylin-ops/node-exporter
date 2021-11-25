@@ -16,7 +16,7 @@
 
 package collector
 
-import "github.com/kylin-ops/node_exporter/prometheus/client_golang/prometheus"
+import "github.com/kylin-ops/node-exporter/prometheus/client_golang/prometheus"
 
 type interruptsCollector struct {
 	desc typedDesc

@@ -20,7 +20,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/kylin-ops/node_exporter/prometheus/procfs/internal/util"
+	"github.com/kylin-ops/node-exporter/prometheus/procfs/internal/util"
 )
 
 // ClassThermalZoneStats contains info from files in /sys/class/thermal/thermal_zone<zone>

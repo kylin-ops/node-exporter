@@ -19,8 +19,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/kylin-ops/node_exporter/prometheus/client_golang/prometheus"
-	"github.com/kylin-ops/node_exporter/prometheus/common/log"
+	"github.com/kylin-ops/node-exporter/prometheus/client_golang/prometheus"
+	"github.com/kylin-ops/node-exporter/prometheus/common/log"
 )
 
 // Namespace defines the common namespace to be used by all metrics.

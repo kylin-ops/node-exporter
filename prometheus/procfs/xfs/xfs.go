@@ -19,7 +19,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/kylin-ops/node_exporter/prometheus/procfs/internal/fs"
+	"github.com/kylin-ops/node-exporter/prometheus/procfs/internal/fs"
 )
 
 // Stats contains XFS filesystem runtime statistics, parsed from

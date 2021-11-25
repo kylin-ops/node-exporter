@@ -20,9 +20,9 @@ import (
 	"strings"
 
 	"github.com/golang/protobuf/proto"
-	"github.com/kylin-ops/node_exporter/prometheus/common/model"
+	"github.com/kylin-ops/node-exporter/prometheus/common/model"
 
-	dto "github.com/kylin-ops/node_exporter/prometheus/client_model/go"
+	dto "github.com/kylin-ops/node-exporter/prometheus/client_model/go"
 )
 
 // Desc is the descriptor used by every Prometheus Metric. It is essentially

@@ -26,11 +26,11 @@ import (
 	"unicode/utf8"
 
 	"github.com/golang/protobuf/proto"
-	"github.com/kylin-ops/node_exporter/prometheus/common/expfmt"
+	"github.com/kylin-ops/node-exporter/prometheus/common/expfmt"
 
-	dto "github.com/kylin-ops/node_exporter/prometheus/client_model/go"
+	dto "github.com/kylin-ops/node-exporter/prometheus/client_model/go"
 
-	"github.com/kylin-ops/node_exporter/prometheus/client_golang/prometheus/internal"
+	"github.com/kylin-ops/node-exporter/prometheus/client_golang/prometheus/internal"
 )
 
 const (

@@ -20,7 +20,7 @@ import (
 	"errors"
 	"unsafe"
 
-	"github.com/kylin-ops/node_exporter/prometheus/common/log"
+	"github.com/kylin-ops/node-exporter/prometheus/common/log"
 )
 
 /*

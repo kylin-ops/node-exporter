@@ -21,7 +21,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/kylin-ops/node_exporter/prometheus/procfs/internal/fs"
+	"github.com/kylin-ops/node-exporter/prometheus/procfs/internal/fs"
 )
 
 // Proc provides information about a running process.

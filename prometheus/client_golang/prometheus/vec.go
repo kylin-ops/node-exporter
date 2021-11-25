@@ -17,7 +17,7 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/kylin-ops/node_exporter/prometheus/common/model"
+	"github.com/kylin-ops/node-exporter/prometheus/common/model"
 )
 
 // metricVec is a Collector to bundle metrics of the same name that differ in

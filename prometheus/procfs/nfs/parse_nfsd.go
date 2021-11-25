@@ -19,7 +19,7 @@ import (
 	"io"
 	"strings"
 
-	"github.com/kylin-ops/node_exporter/prometheus/procfs/internal/util"
+	"github.com/kylin-ops/node-exporter/prometheus/procfs/internal/util"
 )
 
 // ParseServerRPCStats returns stats read from /proc/net/rpc/nfsd

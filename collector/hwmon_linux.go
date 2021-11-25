@@ -25,8 +25,8 @@ import (
 	"strings"
 	"syscall"
 
-	"github.com/kylin-ops/node_exporter/prometheus/client_golang/prometheus"
-	"github.com/kylin-ops/node_exporter/prometheus/common/log"
+	"github.com/kylin-ops/node-exporter/prometheus/client_golang/prometheus"
+	"github.com/kylin-ops/node-exporter/prometheus/common/log"
 )
 
 var (

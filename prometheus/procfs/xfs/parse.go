@@ -19,7 +19,7 @@ import (
 	"io"
 	"strings"
 
-	"github.com/kylin-ops/node_exporter/prometheus/procfs/internal/util"
+	"github.com/kylin-ops/node-exporter/prometheus/procfs/internal/util"
 )
 
 // ParseStats parses a Stats from an input io.Reader, using the format

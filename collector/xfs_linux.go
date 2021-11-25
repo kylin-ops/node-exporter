@@ -16,8 +16,8 @@ package collector
 import (
 	"fmt"
 
-	"github.com/kylin-ops/node_exporter/prometheus/client_golang/prometheus"
-	"github.com/kylin-ops/node_exporter/prometheus/procfs/xfs"
+	"github.com/kylin-ops/node-exporter/prometheus/client_golang/prometheus"
+	"github.com/kylin-ops/node-exporter/prometheus/procfs/xfs"
 )
 
 // An xfsCollector is a Collector which gathers metrics from XFS filesystems.

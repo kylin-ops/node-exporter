@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/kylin-ops/node_exporter/prometheus/client_golang/prometheus"
+	"github.com/kylin-ops/node-exporter/prometheus/client_golang/prometheus"
 	kstat "github.com/siebenmann/go-kstat"
 )
 

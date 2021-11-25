@@ -20,9 +20,9 @@ import (
 	"strings"
 	"time"
 
-	dto "github.com/kylin-ops/node_exporter/prometheus/client_model/go"
+	dto "github.com/kylin-ops/node-exporter/prometheus/client_model/go"
 
-	"github.com/kylin-ops/node_exporter/prometheus/client_golang/prometheus"
+	"github.com/kylin-ops/node-exporter/prometheus/client_golang/prometheus"
 )
 
 // magicString is used for the hacky label test in checkLabels. Remove once fixed.

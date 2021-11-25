@@ -19,7 +19,7 @@ import (
 	"io/ioutil"
 	"os"
 
-	"github.com/kylin-ops/node_exporter/prometheus/procfs/internal/fs"
+	"github.com/kylin-ops/node-exporter/prometheus/procfs/internal/fs"
 )
 
 // Originally, this USER_HZ value was dynamically retrieved via a sysconf call

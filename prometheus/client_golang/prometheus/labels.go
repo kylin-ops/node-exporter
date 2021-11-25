@@ -19,7 +19,7 @@ import (
 	"strings"
 	"unicode/utf8"
 
-	"github.com/kylin-ops/node_exporter/prometheus/common/model"
+	"github.com/kylin-ops/node-exporter/prometheus/common/model"
 )
 
 // Labels represents a collection of label name -> value mappings. This type is

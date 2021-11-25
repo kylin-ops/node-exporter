@@ -20,8 +20,8 @@ import (
 	"fmt"
 	"regexp"
 
-	"github.com/kylin-ops/node_exporter/prometheus/client_golang/prometheus"
-	"github.com/kylin-ops/node_exporter/prometheus/procfs/sysfs"
+	"github.com/kylin-ops/node-exporter/prometheus/client_golang/prometheus"
+	"github.com/kylin-ops/node-exporter/prometheus/procfs/sysfs"
 )
 
 var (

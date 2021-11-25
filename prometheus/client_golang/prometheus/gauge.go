@@ -18,7 +18,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	dto "github.com/kylin-ops/node_exporter/prometheus/client_model/go"
+	dto "github.com/kylin-ops/node-exporter/prometheus/client_model/go"
 )
 
 // Gauge is a Metric that represents a single numerical value that can

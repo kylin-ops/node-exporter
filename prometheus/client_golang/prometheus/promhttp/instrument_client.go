@@ -17,7 +17,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/kylin-ops/node_exporter/prometheus/client_golang/prometheus"
+	"github.com/kylin-ops/node-exporter/prometheus/client_golang/prometheus"
 )
 
 // The RoundTripperFunc type is an adapter to allow the use of ordinary

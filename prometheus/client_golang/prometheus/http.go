@@ -24,7 +24,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/kylin-ops/node_exporter/prometheus/common/expfmt"
+	"github.com/kylin-ops/node-exporter/prometheus/common/expfmt"
 )
 
 // TODO(beorn7): Remove this whole file. It is a partial mirror of

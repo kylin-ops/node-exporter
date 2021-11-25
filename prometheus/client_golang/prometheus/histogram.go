@@ -23,7 +23,7 @@ import (
 
 	"github.com/golang/protobuf/proto"
 
-	dto "github.com/kylin-ops/node_exporter/prometheus/client_model/go"
+	dto "github.com/kylin-ops/node-exporter/prometheus/client_model/go"
 )
 
 // A Histogram counts individual observations from an event or sample stream in

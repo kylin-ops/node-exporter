@@ -19,7 +19,7 @@ package collector
 import (
 	"regexp"
 
-	"github.com/kylin-ops/node_exporter/prometheus/client_golang/prometheus"
+	"github.com/kylin-ops/node-exporter/prometheus/client_golang/prometheus"
 )
 
 // Arch-dependent implementation must define:

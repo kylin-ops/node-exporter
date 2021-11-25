@@ -14,7 +14,7 @@
 package sysfs
 
 import (
-	"github.com/kylin-ops/node_exporter/prometheus/procfs/internal/fs"
+	"github.com/kylin-ops/node-exporter/prometheus/procfs/internal/fs"
 )
 
 // FS represents the pseudo-filesystem sys, which provides an interface to

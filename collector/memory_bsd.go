@@ -19,7 +19,7 @@ package collector
 import (
 	"fmt"
 
-	"github.com/kylin-ops/node_exporter/prometheus/client_golang/prometheus"
+	"github.com/kylin-ops/node-exporter/prometheus/client_golang/prometheus"
 	"golang.org/x/sys/unix"
 )
 

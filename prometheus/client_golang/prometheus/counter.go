@@ -18,7 +18,7 @@ import (
 	"math"
 	"sync/atomic"
 
-	dto "github.com/kylin-ops/node_exporter/prometheus/client_model/go"
+	dto "github.com/kylin-ops/node-exporter/prometheus/client_model/go"
 )
 
 // Counter is a Metric that represents a single numerical value that only ever

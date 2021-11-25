@@ -19,10 +19,10 @@ import (
 	"net/http"
 
 	"github.com/golang/protobuf/proto"
-	"github.com/kylin-ops/node_exporter/prometheus/common/internal/bitbucket.org/ww/goautoneg"
+	"github.com/kylin-ops/node-exporter/prometheus/common/internal/bitbucket.org/ww/goautoneg"
 	"github.com/matttproud/golang_protobuf_extensions/pbutil"
 
-	dto "github.com/kylin-ops/node_exporter/prometheus/client_model/go"
+	dto "github.com/kylin-ops/node-exporter/prometheus/client_model/go"
 )
 
 // Encoder types encode metric families into an underlying wire protocol.

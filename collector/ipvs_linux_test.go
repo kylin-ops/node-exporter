@@ -21,8 +21,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/kylin-ops/node_exporter/prometheus/client_golang/prometheus"
-	"github.com/kylin-ops/node_exporter/prometheus/client_golang/prometheus/promhttp"
+	"github.com/kylin-ops/node-exporter/prometheus/client_golang/prometheus"
+	"github.com/kylin-ops/node-exporter/prometheus/client_golang/prometheus/promhttp"
 	"gopkg.in/alecthomas/kingpin.v2"
 )
 

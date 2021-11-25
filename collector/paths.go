@@ -16,7 +16,7 @@ package collector
 import (
 	"path/filepath"
 
-	"github.com/kylin-ops/node_exporter/prometheus/procfs"
+	"github.com/kylin-ops/node-exporter/prometheus/procfs"
 )
 
 var (

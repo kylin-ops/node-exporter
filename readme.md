@@ -60,7 +60,7 @@ echo '
 package main
 
 import (
-	"github.com/kylin-ops/node_exporter"
+	"github.com/kylin-ops/node-exporter"
 	"net/http"
 )
 

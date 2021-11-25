@@ -22,9 +22,9 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/kylin-ops/node_exporter/prometheus/common/model"
+	"github.com/kylin-ops/node-exporter/prometheus/common/model"
 
-	dto "github.com/kylin-ops/node_exporter/prometheus/client_model/go"
+	dto "github.com/kylin-ops/node-exporter/prometheus/client_model/go"
 )
 
 // enhancedWriter has all the enhanced write functions needed here. bytes.Buffer

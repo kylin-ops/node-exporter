@@ -19,7 +19,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/kylin-ops/node_exporter/prometheus/procfs/internal/fs"
+	"github.com/kylin-ops/node-exporter/prometheus/procfs/internal/fs"
 )
 
 // ReplyCache models the "rc" line.

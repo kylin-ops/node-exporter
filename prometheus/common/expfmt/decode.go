@@ -20,9 +20,9 @@ import (
 	"mime"
 	"net/http"
 
-	dto "github.com/kylin-ops/node_exporter/prometheus/client_model/go"
+	dto "github.com/kylin-ops/node-exporter/prometheus/client_model/go"
 
-	"github.com/kylin-ops/node_exporter/prometheus/common/model"
+	"github.com/kylin-ops/node-exporter/prometheus/common/model"
 	"github.com/matttproud/golang_protobuf_extensions/pbutil"
 )
 

@@ -16,7 +16,7 @@ package prometheus
 import (
 	"fmt"
 	"github.com/golang/protobuf/proto"
-	dto "github.com/kylin-ops/node_exporter/prometheus/client_model/go"
+	dto "github.com/kylin-ops/node-exporter/prometheus/client_model/go"
 	"sort"
 )
 
