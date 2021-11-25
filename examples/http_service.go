@@ -10,9 +10,8 @@ func main() {
 		listenAddress = ":9100"
 		metricsPath   = "/metrics"
 	)
-	labelsPath := "/tmp/labels"
 	scriptPath := "/tmp/scripts"
-	handler := node_exporter.NewNodeExportHandler(labelsPath, scriptPath)
+	handler := node_exporter.NewNodeExportHandler(scriptPath)
 	http.Handle(metricsPath, handler)
 	http.ListenAndServe(listenAddress, nil)
 }
