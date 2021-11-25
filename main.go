@@ -133,11 +133,11 @@ func readLabel(labelPath string) error {
 }
 
 //// 从文件获取label数据
-//func NewNodeExportHandler(labelPath, scriptPath string) *Handler {
-//	_ = readLabel(labelPath)
-//	collector.ScriptPath = scriptPath
-//	return newHandler(true, 40)
-//}
+func NewNodeExportHandlerTest(labelPath, scriptPath string) *Handler {
+	_ = readLabel(labelPath)
+	collector.ScriptPath = scriptPath
+	return newHandler(true, 40)
+}
 
 // 从函数传入labels和service值
 func NewNodeExportHandler(scriptPath string) *Handler {

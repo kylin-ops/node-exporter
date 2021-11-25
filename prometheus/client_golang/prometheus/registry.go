@@ -690,11 +690,15 @@ func processMetric(
 		dMetricLabel.Label = append(dMetricLabel.Label, label...)
 		metricFamily.Metric = append(metricFamily.Metric, &dMetricLabel)
 	}
-	for _, svc := range CustomLabelService {
-		addServiceLabelFn(*dtoMetric, labels, "service", svc)
+	if CustomLabelService != nil {
+		for _, svc := range CustomLabelService {
+			addServiceLabelFn(*dtoMetric, labels, "service", svc)
+		}
+		dtoMetric.Label = append(dtoMetric.Label, labels...)
+		metricFamily.Metric = append(metricFamily.Metric, dtoMetric)
+		return nil
 	}
-	//dtoMetric.Label  = append(dtoMetric.Label, labels...)
-	//metricFamily.Metric = append(metricFamily.Metric, dtoMetric)
+	metricFamily.Metric = append(metricFamily.Metric, dtoMetric)
 	return nil
 }
 
