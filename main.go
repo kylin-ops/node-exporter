@@ -10,7 +10,6 @@ import (
 	"github.com/kylin-ops/node-exporter/prometheus/common/version"
 	"io/ioutil"
 	"net/http"
-	"regexp"
 	"sort"
 )
 
@@ -127,14 +126,6 @@ func readLabel(labelPath string) error {
 		if k != "service" {
 			if val, ok := v.(string); ok {
 				prometheus.CustomLabelValue[k] = val
-			}
-		}
-	}
-	if hostname, ok := data["host_name"]; ok {
-		if hostN, ok := hostname.(string); ok {
-			rgx := regexp.MustCompile(".*dbproxy.*")
-			if rgx.MatchString(hostN) {
-				prometheus.CustomLabelValue["dbproxy"] = "true"
 			}
 		}
 	}
